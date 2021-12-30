@@ -1,14 +1,19 @@
 <!-- Main Page -->
-
-<?php 
-  session_start(); 
-
+<?php
+  
+  
+  session_start();   
+  $con = mysqli_connect('localhost', 'root', '') or die(mysqli_error($con));
+   $username = $_SESSION['username']; 
+   $_SESSION['email'] = mysqli_query($con, "SELECT * FROM users where username= '$username' "); 
+   echo $_SESSION['email'] ;
+  
   if (!isset($_SESSION['username'])) {
     $_SESSION['msg'] = "You must log in first";
     header('location: index.php');}
     $email = $_SESSION['email'];
-    $con = mysqli_connect('localhost', 'root', '') or die(mysqli_error($con));
-    mysqli_select_db($con, 'project1');
+    
+    mysqli_select_db($con, 'registration');
     $req = mysqli_query($con, "SELECT * FROM users where email='$email' ");
     $row = mysqli_fetch_array($req);
 ?>
@@ -38,7 +43,7 @@
             <li><a href="#projects" data-after="Projects">Projects</a></li>
             <li><a href="#about" data-after="About">About</a></li>
             <li><a href="#contact" data-after="Contact">Contact</a></li>
-            <li><a> Username: <?php echo $row["username"]; ?></a></li>
+            <li><a> Username: <?php echo $_SESSION["username"]; ?></a></li>
             <li><a href="logout.php">Logout </a></li>
           </ul>
         </div>
@@ -174,7 +179,8 @@
     </div>
   </section>
   <!-- End About Section -->
-<center><iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d12939.707614474493!2d10.5888804!3d35.8262691!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x4418fc1f1a3cb73f!2sPolytechnique%20Sousse!5e0!3m2!1sen!2stn!4v1640879523830!5m2!1sen!2stn" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe></center>
+<!-- Embeded Map -->
+  <center><iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d12939.707614474493!2d10.5888804!3d35.8262691!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x4418fc1f1a3cb73f!2sPolytechnique%20Sousse!5e0!3m2!1sen!2stn!4v1640879523830!5m2!1sen!2stn" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe></center>
   <!-- Contact Section -->
   <section id="contact">
     <div class="contact container">
