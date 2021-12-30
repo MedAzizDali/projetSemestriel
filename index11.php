@@ -4,17 +4,15 @@
   
   session_start();   
   $con = mysqli_connect('localhost', 'root', '') or die(mysqli_error($con));
-   $username = $_SESSION['username']; 
-   $_SESSION['email'] = mysqli_query($con, "SELECT * FROM users where username= '$username' "); 
-   echo $_SESSION['email'] ;
   
   if (!isset($_SESSION['username'])) {
     $_SESSION['msg'] = "You must log in first";
-    header('location: index.php');
-    $email = $_SESSION['email'];}
-    
+    header('location: index.php');}
+
+    // $email = $_SESSION['email'];
+    $username=$_SESSION['username'];
     mysqli_select_db($con, 'registration');
-    $req = mysqli_query($con, "SELECT * FROM users where email='$email' ");
+    $req = mysqli_query($con, "SELECT * FROM users where username like '$username' ");
     $row = mysqli_fetch_array($req);
 ?>
 
@@ -43,7 +41,7 @@
             <li><a href="#projects" data-after="Projects">Projects</a></li>
             <li><a href="#about" data-after="About">About</a></li>
             <li><a href="#contact" data-after="Contact">Contact</a></li>
-            <li><a> Username: <?php echo $_SESSION["username"]; ?></a></li>
+            <li><a> Username: <?php echo $_SESSION["username"];?></a></li>
             <li><a href="logout.php">Logout </a></li>
           </ul>
         </div>

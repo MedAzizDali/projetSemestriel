@@ -1,6 +1,7 @@
 <?php
 session_start();
 
+
 // initializing variables
 $username = "";
 $email    = "";
@@ -94,6 +95,7 @@ if (mysqli_num_rows($res) ==1){
 	$mdp=$user['password'];
 	if (md5($pwd)==$mdp){
       header('location: index11.php?successLOGIN');
+      $_SESSION["username"]=$user['username'];
 
 	}else {
 			array_push($errors, "Wrong password");
@@ -118,7 +120,7 @@ if (mysqli_num_rows($res) ==1){
 
 		}
 	}else{
-		//	header('location: index.php?NOTfount');
+		//	header('location: index.php?NOTfound');
 			array_push($errors, "Wrong username");
 		}
 

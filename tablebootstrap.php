@@ -26,6 +26,8 @@
             <li><a href="#projects" data-after="Projects">Vidéo</a></li>
             <li><a href="#about" data-after="About">Nos Formateur</a></li>
             <li><a href="#contact" data-after="Contact">Contact</a></li>
+            <li><a> Username: <?php echo $_SESSION["username"]; ?></a></li>
+            <li><a href="logout.php">Logout </a></li>
           </ul>
         </div>
       </div>
