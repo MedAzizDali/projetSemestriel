@@ -15,7 +15,6 @@
     $req = mysqli_query($con, "SELECT * FROM users where username like '$username' ");
     $row = mysqli_fetch_array($req);
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
