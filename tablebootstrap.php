@@ -40,7 +40,7 @@
         <h1>Hello,  <span></span></h1>
         <h1>Welcome To Our  <span></span></h1>
         <h1>Website <span></span></h1>
-        <a href="#" type="button" class="cta">See Projects</a>
+        <a href="index11.php" type="button" class="cta">See Projects</a>
       </div>
     </div>
   </section>
