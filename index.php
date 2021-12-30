@@ -36,7 +36,6 @@
             <li><a href="#about" data-after="About">About</a></li>
             <li><a href="#contact" data-after="Contact">Contact</a></li>
             <li><a style="font-family: noto;"> Username: <?php echo $row["username"]; ?></a></li>
-            <li><a > </a></li>
           </ul>
         </div>
       </div>
