@@ -4,7 +4,7 @@
 
   if (!isset($_SESSION['username'])) {
     $_SESSION['msg'] = "You must log in first";
-    header('location: login.php');}
+    header('location: index.php');}
     $email = $_SESSION['email'];
     $con = mysqli_connect('localhost', 'root', '') or die(mysqli_error($con));
     mysqli_select_db($con, 'project1');
