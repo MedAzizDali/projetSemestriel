@@ -10,8 +10,8 @@
   
   if (!isset($_SESSION['username'])) {
     $_SESSION['msg'] = "You must log in first";
-    header('location: index.php');}
-    $email = $_SESSION['email'];
+    header('location: index.php');
+    $email = $_SESSION['email'];}
     
     mysqli_select_db($con, 'registration');
     $req = mysqli_query($con, "SELECT * FROM users where email='$email' ");

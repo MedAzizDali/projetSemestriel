@@ -1,5 +1,7 @@
 <!-- login -->
-<?php include('server.php') ?>
+<?php include('server.php') 
+
+?>
 <!DOCTYPE html>
 <html>
 <head>
