@@ -1,4 +1,5 @@
 <!-- Main Page -->
+
 <?php 
   session_start(); 
 
@@ -21,6 +22,7 @@
   <title>My Project</title>
 </head>
 <body>
+
   <!-- Header -->
   <section id="header">
     <div class="header container">

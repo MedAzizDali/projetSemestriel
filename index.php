@@ -11,7 +11,7 @@
   	<h2>Login</h2>
   </div>
 	 
-  <form method="post" action="index11.php">
+  <form method="post" action="index.php">
   	<?php include('errors.php'); ?>
   	<div class="input-group">
   		<label>Username</label>
