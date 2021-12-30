@@ -15,7 +15,7 @@
     <div class="header container">
       <div class="nav-bar">
         <div class="brand">
-          <a href="#hero"><h1><span>w</span>eb <span>D</span>ev <span>p</span>roject </h1></a>
+          <a href="index"><h1><span>w</span>eb <span>D</span>ev <span>p</span>roject </h1></a>
         </div>
         <div class="nav-list">
           <div class="hamburger"><div class="bar"></div></div>
@@ -40,7 +40,7 @@
         <h1>Hello,  <span></span></h1>
         <h1>Welcome To Our  <span></span></h1>
         <h1>Website <span></span></h1>
-        <a href="112233.html#projects" type="button" class="cta">See Projects</a>
+        <a href="#" type="button" class="cta">See Projects</a>
       </div>
     </div>
   </section>
@@ -54,7 +54,7 @@
 
       </div>
       <div class="service-bottom ">
-        <fieldset style="color:black;>
+        <fieldset style="color:black;" > </fieldset>
   <legend align= "center">Inscription</legend>
         <form>
   <table>
@@ -131,6 +131,204 @@
   </section>
 
   <!-- End Service Section -->
+
+
+  <!-- Formulaire d'inscription -->
+
+<style>
+  @import url(https://fonts.googleapis.com/css?family=Raleway:200,500,700,800);
+
+*,
+*:after,
+*:before {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+/* body {
+  background: #111;
+  font-weight: 500;
+  font-size: 1.05em;
+  font-family: 'Raleway', Arial, sans-serif;
+} */
+
+#container {
+  position: absolute;
+  width: 710px;
+  height: 5em;
+  left: 50%;
+  top: 50%;
+  margin-left: -355px;
+  margin-top: -2.5em;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-content: center;
+}
+
+.input {
+  position: relative;
+  margin: 1em;
+  width: calc(50% - 2em);
+  height: 80px;
+}
+
+.message {
+  width: calc(100% - 2em);
+  height: 200px;
+}
+
+textarea {
+  border: none;
+  resize: none;
+}
+
+.input__field {
+  position: absolute;
+  margin: 0.8em 0;
+  padding: 0.4em;
+  width: 100%;
+  height: calc(100% - 1.6em);
+  border: none;
+  border-radius: 0;
+  background: transparent;
+  color: #ffcc00;
+  font-size: 1.55em;
+  font-weight: bold;
+  -webkit-appearance: none;/* for box shadows to show on iOS */
+}
+
+.input__field:focus {
+  outline: none;
+}
+
+.input__label {
+  position: absolute;
+  padding: 0 1em;
+  margin: 1.2em 0;
+  width: 100%;
+  height: calc(100% - 2.4em);
+  color: #6a7989;
+  font-weight: bold;
+  font-size: 70.25%;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.input__label-content {
+  position: relative;
+  display: block;
+  padding: 1.5em 0;
+  width: 100%;
+  -webkit-transition: -webkit-transform 0.3s;
+  transition: transform 0.3s;
+}
+
+.input__label::before,
+.input__label:after {
+  content: '';
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: #6a7989;
+  -webkit-transition: -webkit-transform 0.3s;
+  transition: transform 0.3s;
+}
+
+.input__label::before {
+  top: 0;
+}
+
+.input__label::after {
+  bottom: 0;
+}
+
+.input__field:focus + .input__label .input__label-content,
+.input--filled .input__label-content {
+  -webkit-transform: translate3d(0, -90%, 0);
+  transform: translate3d(0, -90%, 0);
+}
+
+.input__field:focus + .input__label::before,
+.input--filled .input__label::before {
+  -webkit-transform: translate3d(0, -0.5em, 0);
+  transform: translate3d(0, -0.5em, 0);
+}
+
+.input__field:focus + .input__label::after,
+.input--filled .input__label::after {
+  -webkit-transform: translate3d(0, 0.5em, 0);
+  transform: translate3d(0, 0.5em, 0);
+}
+
+#send-button {
+  width: 200px;
+  height: 60px;
+  background-color: #6a7989;
+  color: #000;
+  border: 0;
+  font-weight: bold;
+  font-size: 70.25%;
+  text-transform: uppercase;
+  letter-spacing: 4px;
+  -webkit-transition: -webkit-transform 0.3s;
+  transition: transform 0.3s;
+}
+
+#send-button:hover,
+#send-button:focus {
+  outline: 0;
+  background-color: #ffcc00;
+  color: #000;
+  -webkit-transition: -webkit-transform 0.3s;
+  transition: transform 0.3s;
+}
+
+</style>
+
+<script>
+  var $input;
+
+function onInputFocus(event) {
+  var $target = $(event.target);
+  var $parent = $target.parent();
+  $parent.addClass('input--filled');
+};
+
+function onInputBlur(event) {
+  var $target = $(event.target);
+  var $parent = $target.parent();
+
+  if (event.target.value.trim() === '') {
+    $parent.removeClass('input--filled');
+  }
+};
+
+$(document).ready(function() {
+  $input = $('.input__field');
+  
+  // in case there is any value already
+  $input.each(function(){
+    if ($input.val().trim() !== '') {
+      var $parent = $input.parent();
+      $parent.addClass('input--filled');
+    }
+  });
+  
+  $input.on('focus', onInputFocus);
+  $input.on('blur', onInputBlur);
+});
+</script>
+
+  <!-- End Formulaire d'inscription -->
+
 
   <!-- Projects Section -->
   <section id="projects">

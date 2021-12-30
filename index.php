@@ -1,3 +1,4 @@
+<!-- login -->
 <?php include('server.php') ?>
 <!DOCTYPE html>
 <html>
@@ -10,15 +11,15 @@
   	<h2>Login</h2>
   </div>
 	 
-  <form method="post" action="index11.php">
+  <form method="post" action="index.php">
   	<?php include('errors.php'); ?>
   	<div class="input-group">
   		<label>Username</label>
-  		<input type="text" name="username" >
+  		<input type="text" name="username" required>
   	</div>
   	<div class="input-group">
   		<label>Password</label>
-  		<input type="password" name="password">
+  		<input type="password" name="password" minlength="6" required>
   	</div>
   	<div class="input-group">
   		<button type="submit" class="btn" name="login_user">Login</button>
@@ -29,3 +30,4 @@
   </form>
 </body>
 </html>
+

@@ -56,29 +56,74 @@ if (isset($_POST['reg_user'])) {
 } 
 
 // LOGIN USER
-if (isset($_POST['login_user'])) {
-  $username = mysqli_real_escape_string($db, $_POST['username']);
-  $password = mysqli_real_escape_string($db, $_POST['password']);
+// if (isset($_POST['login_user'])) {
+ // $username = mysqli_real_escape_string($db, $_POST['username']);
+  //$password = mysqli_real_escape_string($db, $_POST['password']);
 
-  if (empty($username)) {
-    array_push($errors, "Username is required");
-  }
-  if (empty($password)) {
-    array_push($errors, "Password is required");
-  }
+  //if (empty($username)) {
+   // array_push($errors, "Username is required");
+  //}
+  //if (empty($password)) {
+    //array_push($errors, "Password is required");
+  //}
 
-  if (count($errors) == 0) {
-    $password = md5($password);
-    $query = "SELECT * FROM users WHERE username='$username' AND password='$password'";
-    $results = mysqli_query($db, $query);
-    if (mysqli_num_rows($results) == 1) {
-      $_SESSION['username'] = $username;
-      $_SESSION['success'] = "You are now logged in";
-      header('location: index.php');
-    }else {
-      array_push($errors, "Wrong username/password combination");
-    }
-  }
+  //if (count($errors) == 0) {
+    //$password = md5($password);
+    //$query = "SELECT * FROM users WHERE username='$username' AND password='$password'";
+    //$results = mysqli_query($db, $query);
+    //if (mysqli_num_rows($results) == 1) {
+      //$_SESSION['username'] = $username;
+      //$_SESSION['success'] = "You are now logged in";
+      //header('location: index.php');
+    //}else {
+      //array_push($errors, "Wrong username/password combination");
+    //}
+  //}
+//}
+
+if (isset($_POST['login_user'])){
+$connect=mysqli_connect('localhost','root','') or die(mysqli_error($connect));
+mysqli_select_db($connect,'registration');
+$pwd=$_POST['password'];
+$username=$_POST['username'];
+$query="SELECT * FROM users WHERE username like '$username' ";
+$res=mysqli_query($connect,$query);
+if (mysqli_num_rows($res) ==1){
+	// session_start();
+	$user=mysqli_fetch_array($res);
+	$mdp=$user['password'];
+	if (md5($pwd)==$mdp){
+      header('location: index11.php?successLOGIN');
+
+	}else {
+			array_push($errors, "Wrong password");
+
+	}
+
+}else{
+	$sql_username="SELECT * FROM users where username like '$username'";
+	$res_username=mysqli_query($connect, $sql_username);
+	$count_username=mysqli_num_rows( $res_username);
+	$sql_password="SELECT * FROM users where username='$username' ";
+	$res_pass=mysqli_query($connect, $sql_password);
+	$p=mysqli_fetch_array($res_pass);
+	if($count_username==0){
+		//	header('location: index.php?NOTfound');
+			array_push($errors, "Wrong username");
+
+	}else if($count_username==1){
+		if(md5($pwd)!=$p[0]){
+		//	header('location: index.php?ERROR_PSW');
+			array_push($errors, "Wrong password");
+
+		}
+	}else{
+		//	header('location: index.php?NOTfount');
+			array_push($errors, "Wrong username");
+		}
+
 }
+}
+
 
 ?>
