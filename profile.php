@@ -50,7 +50,7 @@
          $row =mysqli_fetch_array($result);
                 ?>
                 <div class="inputBox">
-                  <input type="text" id="username" name="username" value="<?php echo $row['username'] ?> " disabled><br>
+                  <input type="text" id="username" name="username" value="<?php echo $row['username'] ?> " disabled><br> 
                 </div>
                 <div class="inputBox">
                   <input type="email" id="email" name="email" value="<?php echo $row['email'] ?>" placeholder="Email Address" required><br>
@@ -58,9 +58,9 @@
                 <div class="inputBox">
                   <input type="password" id="password" name="password" placeholder="Enter New Password"><br>
                 </div>
-              <div class="inputBox">
-                  <input type="password" id="cpassword" name="cpassword" placeholder="Confirm Password"><br>
-                </div>  
+                <input type="hidden" value="<?php echo $row['password']; ?>" name="password2">
+                <input type="hidden" name="id_usr" value="<?php echo $row["id"]; ?>">
+
 
             <div>
               <button type="submit" name= "submit" class="button"> Update Profile</button>
@@ -74,9 +74,9 @@
   if (isset($_POST["submit"])){
     // hethom manhbhomsh haw shnbdlhom HAHHAHAH TFATHEL almaout 
 $emailA=$_POST['email'];
-$mdp=$_POST['cpassword'];
-$hash=$_POST['cpassword'];
-
+$mdp=$_POST['password2'];
+$hash=$_POST['password2'];
+$idn = $_POST["id_usr"];
 if (!empty($_POST["password"])) {
                                 $mdp = $_POST["password"];
                                 $hash = md5($mdp);
@@ -88,12 +88,12 @@ if (!empty($_POST["password"])) {
                             } else {
                                 $verif_username = 0;
                             }
- if ($verif_username == 1 && $emailA == $row["email"]) {
+ if ($verif_username == 1 && $emailA != $row["email"]) {
                                 echo ("<meta http-equiv='refresh' content='0;  URL =profile.php?Exist'/>");
-                            } elseif ($emailA !="" || $hash!= "") {
+                            } else{
                        
  //$email=$_SESSION['email'];
-    $insert ="UPDATE users set email='$emailA', password='$hash' where username like '$username'";
+    $insert ="UPDATE users set email='$emailA', password='$hash' where id='$idn'";
     $update=mysqli_query($con,$insert);
   
 }
