@@ -20,6 +20,32 @@
   <title></title>
 </head>
 <body>
+
+
+  <!-- Header -->
+  <section id="header">
+    <div class="header container">
+      <div class="nav-bar">
+        <div class="brand">
+          <a href="#hero"><marquee><h1><span>w</span>eb <span>D</span>ev <span>p</span>roject </h1></marquee></a>
+        </div>
+        <div class="nav-list">
+          <div class="hamburger"><div class="bar"></div></div>
+          <ul>
+            <li><a href="#hero" data-after="Home">Home</a></li>
+            <li><a href="#services" data-after="Service">Services</a></li>
+            <li><a href="#projects" data-after="Projects">Projects</a></li>
+            <li><a href="#about" data-after="About">About</a></li>
+            <li><a href="#contact" data-after="Contact">Contact</a></li>
+            <li><a> Username: <?php echo $_SESSION["username"];?></a></li>
+            <li><a href="logout.php">Logout </a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- End Header -->
+
     <!-- Hero Section  -->
     <section id="hero">
     <div class="hero container">
@@ -33,30 +59,6 @@
   </section> 
 
   <!-- End Hero Section  -->
-
-  <!-- Header -->
-  <section id="header">
-    <div class="header container">
-      <div class="nav-bar">
-      <div class="brand">
-          <a href="#hero"><marquee><h1><span>w</span>eb <span>D</span>ev <span>p</span>roject </h1></marquee></a>
-        </div>
-        <div class="nav-list">
-          <div class="hamburger"><div class="bar"></div></div>
-          <ul>
-            <li><a href="#hero" data-after="Home">Home</a></li>
-            <li><a href="#services" data-after="Service">Form</a></li>
-            <li><a href="#projects" data-after="Projects">Vidéo</a></li>
-            <li><a href="#about" data-after="About">Nos Formateur</a></li>
-            <li><a href="#contact" data-after="Contact">Contact</a></li>
-            <li><a> Username: <?php echo $_SESSION["username"]; ?></a></li>
-            <li><a href="logout.php">Logout </a></li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </section>
-<!-- End Header -->
 
   <!-- Contact Section -->
   <section id="contact">
