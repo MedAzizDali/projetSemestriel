@@ -65,21 +65,30 @@
       <h2>Profile Settings</h2>
           <form action="" method="post">
             <?php
-            
+            $id=$_SESSION['id'];
+            $sql=" SELECT * FROM users WHERE id='$id'";
+            $result = mysqli_query($con,$sql);
+            if (mysqli_num_rows($result)>0){
+              while($row =mysqli_fetch_assoc($result)){
+                ?>
+                <div class="inputBox">
+                  <input type="text" id="username" name="username" value="<?php echo $row['username'] ?> " placeholder="Enter Username"><br>
+                </div>
+                <div class="inputBox">
+                  <input type="email" id="email" name="email" value="<?php echo $row['email'] ?>" placeholder="Email Address" disabled><br>
+                </div>
+                <div class="inputBox">
+                  <input type="password" id="password" name="password" value="<?php echo $row['password'] ?> placeholder="Enter Password"><br>
+                </div>
+                <div class="inputBox">
+                  <input type="password" id="cpassword" name="cpassword" value="<?php echo $row['password'] ?> placeholder="Confirm Password"><br>
+                </div>  
+            <?php
+              }
+            }
             
             ?>
-            <div class="inputBox">
-              <input type="text" id="username" name="username" placeholder="Enter Username"><br>
-            </div>
-            <div class="inputBox">
-              <input type="email" id="email" name="email" placeholder="Email Address" disabled><br>
-            </div>
-            <div class="inputBox">
-              <input type="password" id="password" name="password" placeholder="Enter Password"><br>
-            </div>
-            <div class="inputBox">
-              <input type="password" id="cpassword" name="cpassword" placeholder="Confirm Password"><br>
-            </div>
+            
             <div>
               <button type="submit" class="button"> Update Profile</button>
             </div>
@@ -138,7 +147,7 @@
     .button {
       display: inline-block;
       border-radius: 4px;
-      background-color: #f4511e;
+      background-color: #dc143c;
       border: none;
       color: #FFFFFF;
       text-align: center;
