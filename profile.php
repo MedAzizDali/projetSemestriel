@@ -1,10 +1,11 @@
 <?php
-  session_start();   
-  $con = mysqli_connect('localhost', 'root', '') or die(mysqli_error($con));
-  
-  if (!isset($_SESSION['username'])) {
-    header('location: profile.php');}
+  include_once('nav.php');
 
+  $con = mysqli_connect('localhost', 'root', '') or die(mysqli_error($con));
+  mysqli_select_db($con,'registration');
+  $username=$_SESSION['username'];
+ $req = mysqli_query($con, "SELECT * FROM users where username like '$username' ");
+    $row = mysqli_fetch_array($req);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -18,32 +19,8 @@
 </head>
 <body>
 
-
-  <!-- Header -->
-  <section id="header">
-    <div class="header container">
-      <div class="nav-bar">
-        <div class="brand">
-          <a href="#hero"><marquee><h1><span>w</span>eb <span>D</span>ev <span>p</span>roject </h1></marquee></a> 
-        </div>
-        <div class="nav-list">
-          <div class="hamburger"><div class="bar"></div></div>
-          <ul>
-            <li><a href="#hero" data-after="Home">Home</a></li>
-            <li><a href="#services" data-after="Service">Services</a></li>
-            <li><a href="#projects" data-after="Projects">Projects</a></li>
-            <li><a href="#about" data-after="About">About</a></li>
-            <li><a href="#contact" data-after="Contact">Contact</a></li>
-            <li><a> Username: <?php echo $_SESSION["username"];?></a></li>
-            <li><a href="logout.php">Logout </a></li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </section>
-  <!-- End Header -->
-
     <!-- Hero Section  -->
+
     <section id="hero">
     <div class="hero container">
       <div>
@@ -65,36 +42,69 @@
       <h2>Profile Settings</h2>
           <form action="" method="post">
             <?php
-            $id=$_SESSION['id'];
-            $sql=" SELECT * FROM users WHERE id='$id'";
-            $result = mysqli_query($con,$sql);
-            if (mysqli_num_rows($result)>0){
-              while($row =mysqli_fetch_assoc($result)){
+            $username=$_SESSION['username'];
+
+            $sql=" SELECT * FROM users WHERE username='$username'";
+            $result = mysqli_query($con , $sql);
+            
+         $row =mysqli_fetch_array($result);
                 ?>
                 <div class="inputBox">
-                  <input type="text" id="username" name="username" value="<?php echo $row['username'] ?> " placeholder="Enter Username"><br>
+                  <input type="text" id="username" name="username" value="<?php echo $row['username'] ?> " disabled><br>
                 </div>
                 <div class="inputBox">
-                  <input type="email" id="email" name="email" value="<?php echo $row['email'] ?>" placeholder="Email Address" disabled><br>
+                  <input type="email" id="email" name="email" value="<?php echo $row['email'] ?>" placeholder="Email Address" required><br>
                 </div>
                 <div class="inputBox">
-                  <input type="password" id="password" name="password" value="<?php echo $row['password'] ?> placeholder="Enter Password"><br>
+                  <input type="password" id="password" name="password" placeholder="Enter New Password"><br>
                 </div>
-                <div class="inputBox">
-                  <input type="password" id="cpassword" name="cpassword" value="<?php echo $row['password'] ?> placeholder="Confirm Password"><br>
+              <div class="inputBox">
+                  <input type="password" id="cpassword" name="cpassword" placeholder="Confirm Password"><br>
                 </div>  
-            <?php
-              }
-            }
-            
-            ?>
-            
+
             <div>
-              <button type="submit" class="button"> Update Profile</button>
+              <button type="submit" name= "submit" class="button"> Update Profile</button>
             </div>
           </form>
       </div>
   </section>
+  <?php
+   //if (!isset($_SESSION['username'])) {
+    //header('location: server.php');}
+  if (isset($_POST["submit"])){
+    // hethom manhbhomsh haw shnbdlhom HAHHAHAH TFATHEL almaout 
+$emailA=$_POST['email'];
+$mdp=$_POST['cpassword'];
+$hash=$_POST['cpassword'];
+
+if (!empty($_POST["password"])) {
+                                $mdp = $_POST["password"];
+                                $hash = md5($mdp);
+                            }
+  if ($emailA != "" ) {
+
+                                $query = "SELECT * FROM users where email like '$emailA'";
+                                $verif_username = mysqli_num_rows(mysqli_query($con, $query));
+                            } else {
+                                $verif_username = 0;
+                            }
+ if ($verif_username == 1 && $emailA == $row["email"]) {
+                                echo ("<meta http-equiv='refresh' content='0;  URL =profile.php?Exist'/>");
+                            } elseif ($emailA !="" || $hash!= "") {
+                       
+ //$email=$_SESSION['email'];
+    $insert ="UPDATE users set email='$emailA', password='$hash' where username like '$username'";
+    $update=mysqli_query($con,$insert);
+  
+}
+if ($update) {
+                                echo ("<meta http-equiv='refresh' content='0;  URL =profile.php?Updated'/>");
+}else { 
+  echo mysqli_error($con); }
+
+  }
+ 
+?>
   <style>
     .profile{
       display: flex;

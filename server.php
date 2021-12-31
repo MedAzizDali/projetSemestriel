@@ -96,6 +96,8 @@ if (mysqli_num_rows($res) ==1){
 	if (md5($pwd)==$mdp){
       header('location: index11.php?successLOGIN');
       $_SESSION["username"]=$user['username'];
+      $_SESSION["email"]=$user['email'];
+
 
 	}else {
 			array_push($errors, "Wrong password");
@@ -126,6 +128,5 @@ if (mysqli_num_rows($res) ==1){
 
 }
 }
-
-
 ?>
+
