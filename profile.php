@@ -5,7 +5,6 @@
   if (!isset($_SESSION['username'])) {
     header('location: profile.php');}
 
-    $email = $_SESSION['email'];
     $username=$_SESSION['username'];
     mysqli_select_db($con, 'registration');
     $req = mysqli_query($con, "SELECT * FROM users where username like '$username' ");
@@ -17,16 +16,30 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
-  <link rel="stylesheet" href="tablecss.css">
+  <link rel="stylesheet" href="stylessss.css">
   <title></title>
 </head>
 <body>
+    <!-- Hero Section  -->
+    <section id="hero">
+    <div class="hero container">
+      <div>
+        <h1>Hello,  <span></span></h1>
+        <h1>Welcome To Your  <span></span></h1>
+        <h1>Profile Page <span></span></h1>
+        <a href="index11.php" type="button" class="cta">Visit Home Page</a> 
+      </div>
+    </div>
+  </section> 
+
+  <!-- End Hero Section  -->
+
   <!-- Header -->
   <section id="header">
     <div class="header container">
       <div class="nav-bar">
-        <div class="brand">
-          <a href="index"><h1><span>w</span>eb <span>D</span>ev <span>p</span>roject </h1></a>
+      <div class="brand">
+          <a href="#hero"><marquee><h1><span>w</span>eb <span>D</span>ev <span>p</span>roject </h1></marquee></a>
         </div>
         <div class="nav-list">
           <div class="hamburger"><div class="bar"></div></div>

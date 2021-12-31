@@ -57,7 +57,7 @@
         <h1>Hello,  <span></span></h1>
         <h1>Welcome To Our  <span></span></h1>
         <h1>Website <span></span></h1>
-        <a href="tablebootstrap.php" type="button" class="cta">Visit Profile</a> 
+        <a href="profile.php" type="button" class="cta">Visit Profile</a> 
       </div>
     </div>
   </section> 
