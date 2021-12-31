@@ -64,7 +64,10 @@
       <div class="wrapper">
       <h2>Profile Settings</h2>
           <form action="" method="post">
-            php
+            <?php
+            
+            
+            ?>
             <div class="inputBox">
               <input type="text" id="username" name="username" placeholder="Enter Username"><br>
             </div>
