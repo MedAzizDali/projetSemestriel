@@ -5,10 +5,6 @@
   if (!isset($_SESSION['username'])) {
     header('location: profile.php');}
 
-    $username=$_SESSION['username'];
-    mysqli_select_db($con, 'registration');
-    $req = mysqli_query($con, "SELECT * FROM users where username like '$username' ");
-    $row = mysqli_fetch_array($req);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -17,6 +13,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
   <link rel="stylesheet" href="stylessss.css">
+  <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
   <title></title>
 </head>
 <body>
@@ -27,7 +24,7 @@
     <div class="header container">
       <div class="nav-bar">
         <div class="brand">
-          <a href="#hero"><marquee><h1><span>w</span>eb <span>D</span>ev <span>p</span>roject </h1></marquee></a>
+          <a href="#hero"><marquee><h1><span>w</span>eb <span>D</span>ev <span>p</span>roject </h1></marquee></a> 
         </div>
         <div class="nav-list">
           <div class="hamburger"><div class="bar"></div></div>
@@ -59,6 +56,103 @@
   </section> 
 
   <!-- End Hero Section  -->
+
+  <!-- Profile Settings -->
+
+  <section class="profile">
+    
+      <div class="wrapper">
+      <h2>Profile Settings</h2>
+          <form action="" method="post">
+            php
+            <div class="inputBox">
+              <input type="text" id="username" name="username" placeholder="Enter Username"><br>
+            </div>
+            <div class="inputBox">
+              <input type="email" id="email" name="email" placeholder="Email Address" disabled><br>
+            </div>
+            <div class="inputBox">
+              <input type="password" id="password" name="password" placeholder="Enter Password"><br>
+            </div>
+            <div class="inputBox">
+              <input type="password" id="cpassword" name="cpassword" placeholder="Confirm Password"><br>
+            </div>
+            <div>
+              <button type="submit" class="button"> Update Profile</button>
+            </div>
+          </form>
+      </div>
+  </section>
+  <style>
+    .profile{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      background-color: #dc143c;
+
+    }
+    .wrapper{
+      max-width: 500px;
+      width: 100%;
+      box-shadow: 0 0 5p rgba(0,0,0,.10);
+      margin: auto;
+      background-color: white;
+      border-radius: 4px;
+      min-height: 600px;
+      padding: 2rem;
+    }
+    .wrapper h2{
+      text-align: center;
+      font-size: 4rem;
+      margin-bottom: 5rem;
+    }
+    .wrapper .inputBox{
+      width: 100%;
+      height: 50px;
+      margin-bottom: 1.3rem;
+      position: relative;
+    }
+    .wrapper .inputBox input{
+      width: 100%;
+      height: 100%;
+      border: 1px solid #eee;
+      outline: none;
+      border-radius: 4px;
+      padding: 1rem;
+      font: 2em sans-serif;
+
+    }
+    .wrapper .inputBox :last-child{
+      margin-bottom: 0;
+    }
+    .wrapper button{
+      display: block;
+      width: 100%;
+      margin-top: 5rem;
+      padding: .7em .2rem;
+    }
+    .button {
+      display: inline-block;
+      border-radius: 4px;
+      background-color: #f4511e;
+      border: none;
+      color: #FFFFFF;
+      text-align: center;
+      font-size: 20px;
+      padding: 20px;
+      width: 100%;
+      cursor: pointer;
+      margin-bottom: 0px;
+    }
+    .wrapper form{
+      padding: 0;
+    }
+
+
+  </style>
+ 
+  <!-- End Profile Settings -->
 
   <!-- Contact Section -->
   <section id="contact">
