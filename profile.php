@@ -60,7 +60,14 @@
                 </div>
                 <input type="hidden" value="<?php echo $row['password']; ?>" name="password2">
                 <input type="hidden" name="id_usr" value="<?php echo $row["id"]; ?>">
+                <?php if(isset($_GET['updated'])){
+                 ?>
+                 <p style="color:green;font-weight:700"> Updated successfully ! </p>
+<?php } elseif (isset($_GET['Exist'])) {
+?>
+                 <p style="color:red;font-weight:700"> Email exists  ! </p>
 
+<?php } ?> 
 
             <div>
               <button type="submit" name= "submit" class="button"> Update Profile</button>
